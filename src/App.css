@@ -1,7 +1,18 @@
 .App {
   text-align: center;
 }
+.navbar {
+  text-align: right;
+  background: black;
+  width: 100%;
+  padding: 8px 0px;
+}
 
+.navbarMenu {
+  color: white;
+  margin: 8px;
+  text-decoration: none;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
