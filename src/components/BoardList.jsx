@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const BoardList = () => {
@@ -15,6 +15,7 @@ const BoardList = () => {
     console.log(page);
   };
 
+  const navigate = useNavigate();
   useEffect(() => {
     getBoardList();
   }, []);
@@ -34,10 +35,13 @@ const BoardList = () => {
         </thead>
         <tbody>
           {boardList.map((board) => (
-            // <tr key={board.idx}>
-            <tr key={board.idx} onClick={() => BoardDetail(idx)}>
+            // <tr key={board.idx} onClick={() => moveBoardDetail(idx)}>
+            <tr key={board.idx} style={{ cursor: "pointer" }} onClick={() => navigate(`/board/${board.idx}`)}>
               <td>{board.idx}</td>
-              <Link to={`/board/${board.idx}`}>{board.title}</Link>
+              <td>
+                {board.title}
+                {/* <Link to={`/board/${board.idx}`}>{board.title}</Link> */}
+              </td>
               <td>{board.createdBy}</td>
               <td>{board.createdAt}</td>
             </tr>
