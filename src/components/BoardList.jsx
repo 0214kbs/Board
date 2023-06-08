@@ -23,14 +23,34 @@ const BoardList = () => {
 
   return (
     <>
-      <div>게시판 목록</div>
-      <ul>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일시</th>
+          </tr>
+        </thead>
+        <tbody>
+          {boardList.map((board) => (
+            // <tr key={board.idx}>
+            <tr key={board.idx} onClick={() => BoardDetail(idx)}>
+              <td>{board.idx}</td>
+              <Link to={`/board/${board.idx}`}>{board.title}</Link>
+              <td>{board.createdBy}</td>
+              <td>{board.createdAt}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {/* <ul>
         {boardList.map((board) => (
           <li key={board.idx}>
             <Link to={`/board/${board.idx}`}>{board.title}</Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </>
   );
 };
