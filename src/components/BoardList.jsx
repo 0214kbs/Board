@@ -10,9 +10,10 @@ const BoardList = () => {
   const getBoardList = async () => {
     const response = await axios.get(url + "board");
     setBoardList(response.data.data);
+    console.log(response.data);
 
     const page = response.data.pagination;
-    console.log(page);
+    // console.log(page);
   };
 
   const navigate = useNavigate();
@@ -35,26 +36,15 @@ const BoardList = () => {
         </thead>
         <tbody>
           {boardList.map((board) => (
-            // <tr key={board.idx} onClick={() => moveBoardDetail(idx)}>
             <tr key={board.idx} style={{ cursor: "pointer" }} onClick={() => navigate(`/board/${board.idx}`)}>
               <td>{board.idx}</td>
-              <td>
-                {board.title}
-                {/* <Link to={`/board/${board.idx}`}>{board.title}</Link> */}
-              </td>
+              <td>{board.title}</td>
               <td>{board.createdBy}</td>
               <td>{board.createdAt}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      {/* <ul>
-        {boardList.map((board) => (
-          <li key={board.idx}>
-            <Link to={`/board/${board.idx}`}>{board.title}</Link>
-          </li>
-        ))}
-      </ul> */}
     </>
   );
 };
